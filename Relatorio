@@ -1,328 +1,82 @@
-**Passando o teste pela primeira vez:
-
-public class CamelCase {
-
-	public boolean isEmpty() {
-		return true;
-	}
-
-	public int size() {
-		return 0;
-	}
-
-}
-
-*classe teste inicial:
+Teste 1:
 
 import static org.junit.Assert.*;
+
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Test;
 
 
-public class TestCamelCase {
+public class TestCamelCaseConverter {
 
 	@Test
-	public void testEmptyList() {
-		CamelCase cc = new CamelCase();
-		assertTrue(cc.isEmpty());
-		assertEquals(0, cc.size());  
+	public void testOneWordLowerCase() {
+		List<String> camelList = Arrays.asList("nome");
+		String str = "nome";
+		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
 	}
-
-
-=============================================================================
-
-**Segunda fase dos testes:
-
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
-
-public class TestCamelCase {
-
-	@Test
-	public void testEmptyList() {
-		CamelCase cc = new CamelCase();
-		assertTrue(cc.isEmpty());
-		assertEquals(0, cc.size());  
-	}
-	
-	@Test
-	public void testOneElementList() {
-		CamelCase cc = new CamelCase();
-		cc.elementAdd("name");
-		assertFalse(cc.isEmpty());
-		assertEquals(1, cc.size());
-		assertEquals("name", cc.firstElement());
-	}
-	
-
 }
 
-*código que fez o teste passar:
+Classe 1:
+
 import java.util.ArrayList;
-
-
-public class CamelCase {
-	
-	private Object element;
-	private int quantity;
-
-	public boolean isEmpty() {
-		return (element == null);
-	}
-
-	public int size() {
-		return quantity;
-	}
-
-
-	public Object firstElement() {
-		return element;
-	}
-
-	public void elementAdd(Object element) {
-		this.element = element;
-		quantity++;
-	}
-
-}
-
-============================================================================
-**testando conversão do camelCase
-
-import static org.junit.Assert.*;
-
-import java.util.Arrays;
 import java.util.List;
 
-import org.hamcrest.CoreMatchers;
-import org.junit.Test;
 
+public class CamelCaseConverter {
 
-public class TestCamelCase {
-
-	@Test
-	public void testEmptyList() {
-		CamelCase cc = new CamelCase();
-		assertTrue(cc.isEmpty());
-		assertEquals(0, cc.size());  
-	}
-	
-	@Test
-	public void testOneElementList() {
-		CamelCase cc = new CamelCase();
-		cc.elementAdd("name");
-		assertFalse(cc.isEmpty());
-		assertEquals(1, cc.size());
-		assertEquals("name", cc.firstElement());
-	}
-	
-	@Test
-	public void testConverterCamelCase() {
-		CamelCase cc = new CamelCase();
-		List<String> camelList = Arrays.asList("name", "CPF");
-		cc.elementAdd("nameCPF");
-		assertFalse(cc.isEmpty());
-		assertThat(camelList, CoreMatchers.hasItems("name", "CPF"));
-		assertEquals(2, camelList.size());
-	}
-	
-
-}
-
-*classe CamelCase
-import java.awt.List;
-
-
-public class CamelCase {
-	
-	private String element;
-	private int quantity = 0;
-
-	public boolean isEmpty() {
-		return (element == null);
-	}
-
-	public int size() {
-		return quantity;
-	}
-
-
-	public String firstElement() {
-		return element;
-	}
-
-	public void elementAdd(String element) {
-		this.element = element;
-		quantity++;
-	}
-
-	public List elementsList() {
-		List camelList = new List();
-		String first =  element.split("(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])")[0]; 
-		String second =  element.split("(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])")[1]; 
-		camelList.add(first);
-		camelList.add(second);
+	public static List<String> converterCamelCase(String str) {
+		List<String> camelList = new ArrayList<String>();
+		camelList.add(str);
 		return camelList;
 	}
 
 }
 
-=========================================================================================
-**criando o before
-import static org.junit.Assert.*;
-
-import java.util.Arrays;
-import java.util.List;
-
-import org.hamcrest.CoreMatchers;
-import org.junit.Before;
-import org.junit.Test;
-
-
-public class TestCamelCase {
-
-	private CamelCase cc;
-	
-	@Before
-	public void createCamelCase() {
-		cc = new CamelCase();
-	}
-	
-	
-	@Test
-	public void testEmptyList() {
-		assertTrue(cc.isEmpty());
-		assertEquals(0, cc.size());  
-	}
-	
-	@Test
-	public void testOneElementList() {
-		cc.elementAdd("name");
-		assertFalse(cc.isEmpty());
-		assertEquals(1, cc.size());
-		assertEquals("name", cc.firstElement());
-	}
-	
-	@Test
-	public void testConverterCamelCase() {
-		List<String> camelList = Arrays.asList("name", "CPF");
-		cc.elementAdd("nameCPF");
-		assertFalse(cc.isEmpty());
-		assertThat(camelList, CoreMatchers.hasItems("name", "CPF"));
-		assertEquals(2, camelList.size());
-	}
-	
-
-}
- 
-=======================================================================================
-
-**criando classe de exception:
-
-public class ConvertCamelCaseException extends RuntimeException {
-	
-	public ConvertCamelCaseException(String msg) {
-		super(msg);
-	}
-	
-}
-
-*classe test com exception:
+*************************************************************************************************
+Teste 2:
 
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.hamcrest.CoreMatchers;
-import org.junit.Before;
 import org.junit.Test;
 
 
-public class TestCamelCase {
+public class TestCamelCaseConverter {
 
-	private CamelCase cc;
-	
-	@Before
-	public void createCamelCase() {
-		cc = new CamelCase();
-	}
-	
-	
 	@Test
-	public void testEmptyList() {
-		assertTrue(cc.isEmpty());
-		assertEquals(0, cc.size());  
+	public void testOneWordLowerCase() {
+		List<String> camelList = Arrays.asList("nome");
+		String str = "nome";
+		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
 	}
 	
 	@Test
-	public void testOneElementList() {
-		cc.elementAdd("name");
-		assertFalse(cc.isEmpty());
-		assertEquals(1, cc.size());
-		assertEquals("name", cc.firstElement());
+	public void testOneWordUpperCase() {
+		List<String> camelList = Arrays.asList("nome");
+		String str = "Nome";
+		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
 	}
 	
-	@Test
-	public void testConverterCamelCase() {
-		List<String> camelList = Arrays.asList("name", "CPF");
-		cc.elementAdd("nameCPF");
-		assertFalse(cc.isEmpty());
-		assertThat(camelList, CoreMatchers.hasItems("name", "CPF"));
-		assertEquals(2, camelList.size());
-	}
-
-	@Test(expected=ConvertCamelCaseException.class)
-	public void firstElementIsANumber() {
-		cc.elementAdd("10");
-	}
 }
 
 
-*refatoração da classe principal:
-import java.awt.List;
+Classe 2:
+
+import java.util.ArrayList;
+import java.util.List;
 
 
-public class CamelCase {
-	
-	private String element;
-	private int quantity = 0;
+public class CamelCaseConverter {
 
-	public boolean isEmpty() {
-		return (element == null);
-	}
-
-	public int size() {
-		return quantity;
-	}
-
-
-	public String firstElement() {
-		return element;
-	}
-
-	public void elementAdd(String element) {
-		if (Character.isDigit(element.charAt(0))) {
-			throw new ConvertCamelCaseException("Inválido: não deve começar com números.");
-		} else {
-		this.element = element;
-		quantity++;
-		}
-	}
-
-	public List elementsList() {
-		List camelList = new List();
-		String first =  element.split("(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])")[0]; 
-		String second =  element.split("(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])")[1]; 
-		camelList.add(first);
-		camelList.add(second);
+	public static List<String> converterCamelCase(String str) {
+		List<String> camelList = new ArrayList<String>();
+		camelList.add(str.toLowerCase());
 		return camelList;
 	}
 
 }
-
-=================================================================================================
-
 

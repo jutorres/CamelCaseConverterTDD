@@ -1,10 +1,13 @@
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class CamelCaseConverter {
 
-	public Object converterCamelList(List<String> camelList) {
-		return null;
+	public static List<String> converterCamelCase(String str) {
+		List<String> camelList = new ArrayList<String>();
+		camelList.add(str.toLowerCase());
+		return camelList;
 	}
 
 }

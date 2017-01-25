@@ -10,9 +10,16 @@ public class TestCamelCaseConverter {
 
 	@Test
 	public void testOneWordLowerCase() {
-		CamelCaseConverter c = new CamelCaseConverter();
-		List<String> camelList = Arrays.asList("name");
-		assertEquals("name", c.converterCamelList(camelList));  
+		List<String> camelList = Arrays.asList("nome");
+		String str = "nome";
+		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
+	}
+	
+	@Test
+	public void testOneWordUpperCase() {
+		List<String> camelList = Arrays.asList("nome");
+		String str = "Nome";
+		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
 	}
 	
 }
