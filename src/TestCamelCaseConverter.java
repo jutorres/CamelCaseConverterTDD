@@ -29,4 +29,11 @@ public class TestCamelCaseConverter {
 		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
 	}
 	
+	@Test
+	public void testTwoWordsWithUpperCase() {
+		List<String> camelList = Arrays.asList("nome", "composto");
+		String str = "NomeComposto";
+		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
+	}
+	
 }

@@ -3,7 +3,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-
 public class CamelCaseConverter {
 
 	public static List<String> converterCamelCase(String str) {
@@ -11,10 +10,8 @@ public class CamelCaseConverter {
 		String res = "";
 		for (int i = 0; i < str.length(); i++) {
 			Character ch = str.charAt(i);
-			if (Character.isUpperCase(str.charAt(0))){
-				res += Character.toLowerCase(ch);
-			}else if (Character.isUpperCase(ch)) {
-				res += " " + Character.toLowerCase(ch);
+			if (Character.isUpperCase(ch)) {
+				res +=  " " + Character.toLowerCase(ch);
 			} else {
 				res += ch;
 			}
@@ -22,6 +19,7 @@ public class CamelCaseConverter {
 		String[] s = res.split(" ");
 		Collections.addAll(camelList, s);
 		return camelList;
+
 	}
 
 }
