@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -6,16 +8,19 @@ public class CamelCaseConverter {
 
 	public static List<String> converterCamelCase(String str) {
 		List<String> camelList = new ArrayList<String>();
-		StringBuilder sb = new StringBuilder();
+		String res = "";
 		for (int i = 0; i < str.length(); i++) {
-			if (Character.isLowerCase(str.charAt(i))) {
-				sb.append(str.charAt(i));
+			Character ch = str.charAt(i);
+			if (Character.isUpperCase(str.charAt(0))){
+				res += Character.toLowerCase(ch);
+			}else if (Character.isUpperCase(ch)) {
+				res += " " + Character.toLowerCase(ch);
 			} else {
-				sb = new StringBuilder();
-				sb.append(str.charAt(i));
+				res += ch;
 			}
 		}
-		camelList.add(sb.toString().toLowerCase());
+		String[] s = res.split(" ");
+		Collections.addAll(camelList, s);
 		return camelList;
 	}
 
