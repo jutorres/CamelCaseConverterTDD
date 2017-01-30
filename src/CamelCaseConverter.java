@@ -18,6 +18,9 @@ public class CamelCaseConverter {
 		}
 		String[] s = res.split(" ");
 		Collections.addAll(camelList, s);
+		if (camelList.get(0).equals("")) {
+			camelList.remove(0);
+		}
 		return camelList;
 
 	}
