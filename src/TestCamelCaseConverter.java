@@ -36,4 +36,13 @@ public class TestCamelCaseConverter {
 		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
 	}
 	
+	@Test
+	public void testUpperCaseWord() {
+		List<String> camelList = Arrays.asList("CPF");
+		String str = "CPF";
+		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
+	}
+	
+	
+	
 }

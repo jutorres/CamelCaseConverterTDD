@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -10,7 +9,9 @@ public class CamelCaseConverter {
 		String res = "";
 		for (int i = 0; i < str.length(); i++) {
 			Character ch = str.charAt(i);
-			if (Character.isUpperCase(ch)) {
+			if (Character.isUpperCase(str.charAt(0)) && Character.isUpperCase(str.charAt(1))) {
+				res +=  ch;
+			} else if (Character.isUpperCase(ch)) {
 				res +=  " " + Character.toLowerCase(ch);
 			} else {
 				res += ch;

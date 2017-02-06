@@ -80,3 +80,168 @@ public class CamelCaseConverter {
 
 }
 
+*************************************************************************************************
+Teste 3:
+
+import static org.junit.Assert.*;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.Test;
+
+
+public class TestCamelCaseConverter {
+
+	@Test
+	public void testOneWordLowerCase() {
+		List<String> camelList = Arrays.asList("nome");
+		String str = "nome";
+		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
+	}
+	
+	@Test
+	public void testOneWordUpperCase() {
+		List<String> camelList = Arrays.asList("nome");
+		String str = "Nome";
+		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
+	}
+	
+	@Test
+	public void testTwoWordsWithLowerAndUpperCase() {
+		List<String> camelList = Arrays.asList("nome", "composto");
+		String str = "nomeComposto";
+		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
+	}
+
+Classe 3:
+
+*************************************************************************************************
+Teste 4:
+
+import static org.junit.Assert.*;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.Test;
+
+
+public class TestCamelCaseConverter {
+
+	@Test
+	public void testOneWordLowerCase() {
+		List<String> camelList = Arrays.asList("nome");
+		String str = "nome";
+		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
+	}
+	
+	@Test
+	public void testOneWordUpperCase() {
+		List<String> camelList = Arrays.asList("nome");
+		String str = "Nome";
+		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
+	}
+	
+	@Test
+	public void testTwoWordsWithLowerAndUpperCase() {
+		List<String> camelList = Arrays.asList("nome", "composto");
+		String str = "nomeComposto";
+		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
+	}
+	
+	@Test
+	public void testTwoWordsWithUpperCase() {
+		List<String> camelList = Arrays.asList("nome", "composto");
+		String str = "NomeComposto";
+		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
+	}
+
+Classe 4: 
+
+*************************************************************************************************
+Teste 5:
+
+import static org.junit.Assert.*;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.Test;
+
+
+public class TestCamelCaseConverter {
+
+	@Test
+	public void testOneWordLowerCase() {
+		List<String> camelList = Arrays.asList("nome");
+		String str = "nome";
+		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
+	}
+	
+	@Test
+	public void testOneWordUpperCase() {
+		List<String> camelList = Arrays.asList("nome");
+		String str = "Nome";
+		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
+	}
+	
+	@Test
+	public void testTwoWordsWithLowerAndUpperCase() {
+		List<String> camelList = Arrays.asList("nome", "composto");
+		String str = "nomeComposto";
+		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
+	}
+	
+	@Test
+	public void testTwoWordsWithUpperCase() {
+		List<String> camelList = Arrays.asList("nome", "composto");
+		String str = "NomeComposto";
+		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
+	}
+	
+	@Test
+	public void testUpperCaseWord() {
+		List<String> camelList = Arrays.asList("CPF");
+		String str = "CPF";
+		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
+	}
+	
+	
+	
+}
+
+Classe 5:
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class CamelCaseConverter {
+
+	public static List<String> converterCamelCase(String str) {
+		List<String> camelList = new ArrayList<String>();
+		String res = "";
+		for (int i = 0; i < str.length(); i++) {
+			Character ch = str.charAt(i);
+			if (Character.isUpperCase(str.charAt(0)) && Character.isUpperCase(str.charAt(1))) {
+				res +=  ch;
+			} else if (Character.isUpperCase(ch)) {
+				res +=  " " + Character.toLowerCase(ch);
+			} else {
+				res += ch;
+			}
+		}
+		String[] s = res.split(" ");
+		Collections.addAll(camelList, s);
+		if (camelList.get(0).equals("")) {
+			camelList.remove(0);
+		}
+		return camelList;
+
+	}
+
+}
+
+*************************************************************************************************
+
