@@ -43,6 +43,11 @@ public class TestCamelCaseConverter {
 		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
 	}
 	
-	
+	@Test
+	public void testUpperCaseWordInAPhrase() {
+		List<String> camelList = Arrays.asList("numero","CPF");
+		String str = "numeroCPF";
+		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
+	}
 	
 }
