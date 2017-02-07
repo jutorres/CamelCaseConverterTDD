@@ -1,17 +1,26 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CamelCaseConverter {
 
-	public static List<String> converterCamelCase(String str) {
-		boolean ultimaLetraEraUpper = false;
-		boolean abbreviation = false;
-		String palavraAtual = "";
+	public static List<String> converterCamelCase(String original) {
 		List<String> camelList = new ArrayList<String>();
-
-		for (int i = 0; i < str.length(); i++) {
-			Character ch = str.charAt(i);
-
+		boolean ultimaLetraEraUpper = false;
+		String palavraAtual = "";
+		
+		if (Character.isDigit(original.charAt(0))) {
+			throw new StartWithDigitException("Inválido, não deve começar com números.");
+		}
+		
+		if (hasSpecialCharacter(original)) {
+			throw new HasSpecialCharacterException("Inválido, caracteres especiais não são permitidos, somente letras e números.");
+		}
+		
+		for (int i = 0; i < original.length(); i++) {
+			Character ch = original.charAt(i);
+			
 			if (Character.isUpperCase(ch)) {
 				if (ultimaLetraEraUpper) {
 					palavraAtual += ch.toString();
@@ -24,6 +33,7 @@ public class CamelCaseConverter {
 				palavraAtual += ch;
 				ultimaLetraEraUpper = false;
 			}
+			
 		}
 		camelList.add(palavraAtual);
 
@@ -37,9 +47,7 @@ public class CamelCaseConverter {
 				camelList.set(i, palavraAtual.toLowerCase());
 			}
 		}
-		
 		return camelList;
-		
 	}
 
 	private static boolean hasLowerCase(String palavraAtual) {
@@ -50,5 +58,10 @@ public class CamelCaseConverter {
 		}
 		return false;
 	}
-
+	
+	private static boolean hasSpecialCharacter(String original) {
+		Pattern p = Pattern.compile("[^a-zA-Z_0-9]");
+		Matcher m = p.matcher(original);
+		return m.find();
+	}
 }

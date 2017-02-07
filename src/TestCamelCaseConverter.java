@@ -44,10 +44,22 @@ public class TestCamelCaseConverter {
 	}
 	
 	@Test
-	public void testUpperCaseWordInAPhrase() {
+	public void testOneLowerCaseAndUpperCaseWord() {
 		List<String> camelList = Arrays.asList("numero","CPF");
 		String str = "numeroCPF";
 		assertEquals(camelList, CamelCaseConverter.converterCamelCase(str));  
+	}
+	
+	@Test(expected=StartWithDigitException.class)
+	public void testStarWithDIgit() {
+		String str = "10Primeiros";
+		CamelCaseConverter.converterCamelCase(str);  
+	}
+	
+	@Test(expected=HasSpecialCharacterException.class)
+	public void testHasSpecialCharacter() {
+		String str = "nome#Composto";
+		CamelCaseConverter.converterCamelCase(str);  
 	}
 	
 }
